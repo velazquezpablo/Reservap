@@ -17,8 +17,13 @@ var app = new Framework7({
       { path: '/index/',            url: 'index.html',   },
       { path: '/registro/',         url: 'registro.html',   },
       { path: '/confirmacion/',     url: 'confirmacion.html',   },
-      { path: '/info/',             url: 'info.html',   },
+      { path: '/reservar/',         url: 'reservar.html',   },
       { path: '/login/',            url: 'login.html',   },
+      { path: '/verReservas/',      url: 'verReservas.html',   },
+      { path: '/cena/',             url: 'cena.html',   },
+      { path: '/boliche/',          url: 'boliche.html',   },
+      { path: '/cenaReservada/',    url: 'cenaReservada.html',   },
+      { path: '/bolicheReservado/', url: 'bolicheReservado.html',   },
     ]
     // ... other parameters
   });
@@ -68,12 +73,12 @@ $$(document).on('page:init', '.page[data-name="confirmacion"]', function (e) {
     // This method accepts a Position object, which contains the
     // current GPS coordinates
     //
-    var fnLeeOKelGPS = function(position) {
-        latitud = position.coords.latitude 
-        longitud = position.coords.longitude
+    // var fnLeeOKelGPS = function(position) {
+    //     latitud = position.coords.latitude 
+    //     longitud = position.coords.longitude
 
-        $$("#confLatitud").text(latitud)
-        $$("#confLongitud").text(longitud)
+    //     $$("#confLatitud").text(latitud)
+    //     $$("#confLongitud").text(longitud)
 
         /*
         alert('Latitude: '          + position.coords.latitude          + '\n' +
@@ -86,22 +91,22 @@ $$(document).on('page:init', '.page[data-name="confirmacion"]', function (e) {
               'Timestamp: '         + position.timestamp                + '\n');
         */
         // cant de segundos que pasaron desde el 1/1/1970 
-    };
+//     };
 
-    // onError Callback receives a PositionError object
-    //
-    function onErrorGPS(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
+//     // onError Callback receives a PositionError object
+//     //
+//     function onErrorGPS(error) {
+//         alert('code: '    + error.code    + '\n' +
+//               'message: ' + error.message + '\n');
+//     }
 
-    navigator.geolocation.getCurrentPosition(fnLeeOKelGPS, onErrorGPS);
+//     navigator.geolocation.getCurrentPosition(fnLeeOKelGPS, onErrorGPS);
 
 
 
 })
 
-$$(document).on('page:init', '.page[data-name="info"]', function (e) {
+$$(document).on('page:init', '.page[data-name="reservar"]', function (e) {
     cargarDatosUsuarioLogueado();
 })
 
@@ -132,7 +137,7 @@ function sembrarDatos() {
 
 
 /* MIS FUNCIONES */
-var email, clave, nombre, apellido, latitud, longitud;
+var email, clave, nombre, apellido;
 
 function fnIniciarSesion() {
     email = $$("#loginEmail").val();
@@ -148,7 +153,7 @@ function fnIniciarSesion() {
 
             console.log("Bienvenid@!!! " + email);
 
-            mainView.router.navigate('/info/');
+            mainView.router.navigate('/reservar/');
             // ...
           })
           .catch((error) => {
@@ -175,7 +180,7 @@ function fnRegistro() {
               .then((userCredential) => {
                 // Signed in
                 var user = userCredential.user;
-                console.log("Bienvenid@!!! " + email);
+                console.log("Bienvenide! " + email);
                 // ...
                 mainView.router.navigate('/registro/');
               })
@@ -248,5 +253,4 @@ function cargarDatosUsuarioLogueado() {
     } )
     .catch(function(error) {
         console.log("Error: " + error);
-    })
-}
+    })}

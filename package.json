@@ -16,6 +16,7 @@
     "chalk": "^4.1.0",
     "copy-webpack-plugin": "^7.0.0",
     "cordova-browser": "^6.0.0",
+    "cordova-plugin-browsersync": "^1.1.0",
     "cordova-plugin-browsersync-gen2": "^1.1.7",
     "cordova-plugin-geolocation": "^5.0.0",
     "cordova-plugin-whitelist": "1",
