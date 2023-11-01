@@ -24,6 +24,8 @@ var app = new Framework7({
       { path: '/boliche/',          url: 'boliche.html',   },
       { path: '/cenaReservada/',    url: 'cenaReservada.html',   },
       { path: '/bolicheReservado/', url: 'bolicheReservado.html',   },
+      { path: '/viernes/',          url: 'viernes.html',   },
+      { path: '/sabado/',           url: 'sabado.html',   },
     ]
     // ... other parameters
   });
