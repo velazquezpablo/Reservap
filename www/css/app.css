@@ -789,11 +789,10 @@ code {
 
 .page {
   text-align: center;
-  background-image: url(../img/qui-nguyen-Zrp9b3PMIy8-unsplash.jpg);
-  background-size: 100% 100%;
+  background-image: url(../img/john-arano-_qADvinJi20-unsplash.jpg);
+  background-size: cover;
   background-attachment: fixed;
-  
-  
+  background-repeat: no-repeat;
 }
 
 a{
@@ -805,9 +804,23 @@ h1 {
   text-shadow: 2px 2px 0px #121212;
 }
 
+h2,
+h3 {
+  color: white;
+  text-shadow: 2px 2px 0px #121212;
+}
+
+.icon{
+  border: solid 2px #5b24d3;
+  background-color: white;
+}
+
+.list ul {
+  opacity: .9;
+}
 .block-title{
   color: white;
-  font-size: 20px;
+  font-size: 24px;
   padding: 10px 0px;
   text-shadow: 2px 2px 0px #121212;
 }
@@ -826,21 +839,7 @@ h1 {
   width: 90%;
   margin: auto;
   font-size: 18px;
-}
-
-.item-title{
-  color:white;
-  font-size: 25px;
-}
-
-.item-inner{
-  color: white;
-  font-size: 20px;
-}
-
-.item-inner2{
-  color: white;
-  font-size: 25px;
+  text-shadow: 2px 2px 0px #121212;
 }
 
 .titulos {
@@ -849,19 +848,12 @@ h1 {
   font-size: 25px;
 }
 
-
-#dias{
-  font-size: 25px;
-}
 .titulosinput{
   color: white;
   font-size: 22px;
+  text-shadow: 2px 2px 0px #121212;
 }
 
-.list{
-  color: white;
-  font-size: 20px;
-}
 .item-input-wrap{
   color: black;
 }
