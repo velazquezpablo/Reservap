@@ -23,7 +23,7 @@
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-user-select: text;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#E4E4E4;
     background-image:linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%);
     font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
@@ -39,7 +39,7 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    background:url(../img/designpng.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
     left:50%;
     top:50%;
@@ -68,15 +68,6 @@ h1 {
     overflow:visible;
     padding:0px;
     text-align:center;
-}
-
-.titulos {
-    text-align: center;
-}
-
-img {
-    width: 50px;
-    height: 50px;
 }
 
 .event {

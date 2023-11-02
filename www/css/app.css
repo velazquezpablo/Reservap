@@ -787,6 +787,16 @@ code {
   background: #666;
 }
 
+.page {
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
 .page-home,
 .page-about {
   --f7-list-border-color: transparent;
