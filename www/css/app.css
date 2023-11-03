@@ -874,6 +874,10 @@ h3 {
   background-color: #210a53;
 }
 
+.toolbar{
+  visibility: hidden;
+}
+
 .page-home,
 .page-about {
   --f7-list-border-color: transparent;
