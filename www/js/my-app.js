@@ -33,9 +33,10 @@ var app = new Framework7({
 var mainView = app.views.create('.view-main');
 
 var db = firebase.firestore();
-var colRoles = db.collection("ROLES");
-var colPersonas = db.collection("PERSONAS");
-var colMensaje = db.collection("MENSAJES");
+// var colRoles = db.collection("Roles");
+var colUsuarios = db.collection("Usuarios");
+// var colAdministrador = db.collection("Administrador");
+// var colMensaje = db.collection("MENSAJES");
 
 
 // Handle Cordova Device Ready Event
@@ -118,9 +119,9 @@ $$(document).on('page:init', '.page[data-name="reservar"]', function (e) {
 /* SEMBRADO */  
 function sembrarDatos() {
 
-    var dato = { rol: "Desarrollador/a", color: "Verde" }
-    var miId = "DEV";
-    colRoles.doc(miId).set(dato)
+    var dato = { apellido: "Montenegro", nombre: "Jorge", rol: "Administrador"}
+    var miId = "admin@admin.com";
+    colUsuarios.doc(miId).set(dato)
     .then( function(docRef) {
         console.log("Doc creado con el id: " + docRef.id);
     })
@@ -128,13 +129,7 @@ function sembrarDatos() {
         console.log("Error: " + error);
     })
 
-
-
-
-
 }
-
-
 
 
 
@@ -153,7 +148,7 @@ function fnIniciarSesion() {
             // Signed in
             var user = userCredential.user;
 
-            console.log("Bienvenid@!!! " + email);
+            console.log("Bienvenide! " + email);
 
             mainView.router.navigate('/reservar/');
             // ...
@@ -192,13 +187,10 @@ function fnRegistro() {
                 console.error(errorCode);
                 console.error(errorMessage);
                 if (errorCode == "auth/email-already-in-use") {
-                    console.error("el mail ya esta usado");
+                    console.error("El mail ya esta usado");
                 }
                 // ..
               });
-
-
-
 
 
         //mainView.router.navigate("/registro/")
@@ -211,10 +203,10 @@ function fnFinRegistro() {
 
     if (nombre!="" && apellido!="") {
 
-        datos = { nombre: nombre, apellido: apellido, rol: "DEV" }
+        datos = { nombre: nombre, apellido: apellido, rol: "Usuario" }
         elID = email;
 
-        colPersonas.doc(elID).set(datos)
+        colUsuarios.doc(elID).set(datos)
         .then( function(docRef) {
            mainView.router.navigate("/confirmacion/") 
         })
@@ -227,7 +219,7 @@ function fnFinRegistro() {
 }
 
 function cargarUsuariosEjemplo() {
-    colPersonas.get()
+    colUsuarios.get()
     .then( function(qs) {
         qs.forEach( function(elDoc) {
             nombre = elDoc.data().nombre;
@@ -244,7 +236,7 @@ function cargarUsuariosEjemplo() {
 }
 
 function cargarDatosUsuarioLogueado() {
-    colPersonas.doc(email).get()
+    colUsuarios.doc(email).get()
     .then( function(unDoc) {
         //console.log(unDoc);
         nombre = unDoc.data().nombre;
