@@ -26,12 +26,12 @@ var app = new Framework7({
       { path: '/bolicheReservado/', url: 'bolicheReservado.html',   },
       { path: '/viernes/',          url: 'viernes.html',   },
       { path: '/sabado/',           url: 'sabado.html',   },
+      { path: '/info/',             url: 'info.html',   },
     ]
     // ... other parameters
   });
 
 var mainView = app.views.create('.view-main');
-
 var db = firebase.firestore();
 // var colRoles = db.collection("Roles");
 var colUsuarios = db.collection("Usuarios");
@@ -113,13 +113,16 @@ $$(document).on('page:init', '.page[data-name="reservar"]', function (e) {
     cargarDatosUsuarioLogueado();
 })
 
+$$(document).on('page:init', '.page[data-name="cena"]', function (e) {
+    diaReservado();
+})
 
 
 
 /* SEMBRADO */  
 function sembrarDatos() {
 
-    var dato = { apellido: "Montenegro", nombre: "Jorge", rol: "Administrador"}
+    var dato = { apellido: "Montenegro", nombre: "Jorge", rol: "Administrador" }
     var miId = "admin@admin.com";
     colUsuarios.doc(miId).set(dato)
     .then( function(docRef) {
@@ -134,7 +137,7 @@ function sembrarDatos() {
 
 
 /* MIS FUNCIONES */
-var email, clave, nombre, apellido;
+var email, clave, nombre, apellido, dias, cantidad;
 
 function fnIniciarSesion() {
     email = $$("#loginEmail").val();
@@ -160,10 +163,6 @@ function fnIniciarSesion() {
             console.error(errorCode);
                 console.error(errorMessage);
           });
-
-
-
-
     }
 }
 
@@ -187,12 +186,10 @@ function fnRegistro() {
                 console.error(errorCode);
                 console.error(errorMessage);
                 if (errorCode == "auth/email-already-in-use") {
-                    console.error("El mail ya esta usado");
+                    console.error("El mail ya esta en uso");
                 }
                 // ..
               });
-
-
         //mainView.router.navigate("/registro/")
     }
 }
@@ -213,8 +210,6 @@ function fnFinRegistro() {
         .catch(function(error) {
             console.log("Error: " + error);
         })
-
-        
     }
 }
 
@@ -248,3 +243,11 @@ function cargarDatosUsuarioLogueado() {
     .catch(function(error) {
         console.log("Error: " + error);
     })}
+
+function diaReservado() {
+    dias = document.querySelector("input[name=diaReserva]:checked").value
+}
+
+function cantidadPersonas() {
+    cantPersonas = $$("#cantPersonas").text(cantidad)
+}

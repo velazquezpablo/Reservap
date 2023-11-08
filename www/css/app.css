@@ -801,13 +801,20 @@ a{
 
 h1 {
   color: white;
-  text-shadow: 2px 2px 0px #121212;
+  text-shadow: 1px 1px 1px #121212,
+  1px 2px 1px #121212,
+  -1px -1px 2px #121212,
+  -1px -2px 5px #121212;
 }
 
 h2,
 h3 {
-  color: white;
-  text-shadow: 2px 2px 0px #121212;
+  margin: 20px 20px;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 1px #121212,
+  1px 2px 1px #121212,
+  -1px -1px 2px #121212,
+  -1px -2px 5px #121212;
 }
 
 .icon{
@@ -822,7 +829,25 @@ h3 {
   color: white;
   font-size: 24px;
   padding: 10px 0px;
-  text-shadow: 2px 2px 0px #121212;
+  text-shadow: 1px 1px 1px #121212,
+                1px 2px 1px #121212,
+                -1px -1px 2px #121212,
+  -1px -2px 5px #121212;          
+}
+
+
+.icon{
+  color: #5b24d3;
+}
+.icon::after{
+  color: #5b24d3 ;
+}
+.icon-radio{
+  background-color: white;
+}
+.icon-radio::after{
+  background-color: #5b24d3 ;
+  color: #5b24d3;
 }
 
 .title {
@@ -839,19 +864,28 @@ h3 {
   width: 90%;
   margin: auto;
   font-size: 18px;
-  text-shadow: 2px 2px 0px #121212;
+  text-shadow: 1px 1px 1px #121212,
+  1px 2px 1px #121212,
+  -1px -1px 1px #121212,
+  -1px -2px 1px #121212;
 }
 
 .titulos {
   color: white;
-  text-shadow: 2px 2px 0px #121212;
+  text-shadow: 1px 1px 1px #121212,
+  1px 2px 1px #121212,
+  -1px -1px 2px #121212,
+  -1px -2px 5px #121212;
   font-size: 25px;
 }
 
 .titulosinput{
   color: white;
   font-size: 22px;
-  text-shadow: 2px 2px 0px #121212;
+  text-shadow: 1px 1px 1px #121212,
+  1px 2px 1px #121212,
+  -1px -1px 2px #121212,
+  -1px -2px 5px #121212;
 }
 
 .item-input-wrap{
