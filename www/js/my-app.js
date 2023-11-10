@@ -249,5 +249,5 @@ function diaReservado() {
 }
 
 function cantidadPersonas() {
-    cantPersonas = $$("#cantPersonas").text(cantidad)
+    cantidad = $$("#cantPersonas").text(cantidad)
 }
