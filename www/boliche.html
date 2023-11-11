@@ -1,5 +1,5 @@
 <!-- We don't need a full layout in this file because this page will be parsed with Ajax.  -->
-<div class="page" data-name="about">
+<div class="page" data-name="cena">
   <div class="navbar">
       <div class="navbar-inner sliding">
       <div class="left">
@@ -8,31 +8,31 @@
           <span class="ios-only">Back</span>
           </a>
       </div>
-      <div class="titulos">Reserva para boliche</div>
+      <div class="titulos">Reserva boliche</div>
       </div>
   </div>
   <div class="page-content">
       
     <br><br>
-    <h1>Reserva para boliche</h1>
+    <h1>Reserva boliche</h1>
       
       <h1 class="block-title">¿Que dia queres reservar?</h1>
       <div class="list">
         <ul>
           <li>
-            <label class="item-checkbox item-content">
-              <input type="checkbox" name="demo-checkbox" id="titulosinput" value="Viernes" />
-              <i class="icon icon-checkbox"></i>
-              <div class="item-inner" id="dias">
+            <label class="item-radio item-content">
+              <input type="radio" name="diaReserva" id="diaReserva" value="Viernes" />
+              <i class="icon icon-radio"></i>
+              <div class="item-inner">
                 <div class="titulosinput">Viernes</div>
               </div>
             </label>
           </li>
           <li>
-            <label class="item-checkbox item-content">
-              <input type="checkbox" name="demo-checkbox" id="titulosinput" value="Sabado" />
-              <i class="icon icon-checkbox"></i>
-              <div class="item-inner" id="dias">
+            <label class="item-radio item-content">
+              <input type="radio" name="diaReserva" id="diaReserva" checked="true" value="Sabado"/>
+              <i class="icon icon-radio"></i>
+              <div class="item-inner">
                 <div class="titulosinput">Sabado</div>
               </div>
             </label>
@@ -46,7 +46,7 @@
           <li class="item-content item-input">
             <div class="item-inner">
               <div class="item-input-wrap">
-                <input type="number" placeholder="Cantidad de personas">
+                <input type="text" id="cantPersonas" placeholder="Cantidad de personas">
                 <span class="input-clear-button"></span>
               </div>
             </div>
@@ -54,7 +54,7 @@
     </div>
 
       <div class="grid grid-cols-1 grid-gap">
-        <div><a href="/bolicheReservado/" class="button button-outline button-round button-raised">Confirmar</a></div>
+        <div> <button id="btncena" ><a href="/bolicheReservado/" class="button button-outline button-round button-raised">Confirmar</a> </button> </div>
       </div>
 
   </div>

@@ -33,10 +33,7 @@ var app = new Framework7({
 
 var mainView = app.views.create('.view-main');
 var db = firebase.firestore();
-// var colRoles = db.collection("Roles");
 var colUsuarios = db.collection("Usuarios");
-// var colAdministrador = db.collection("Administrador");
-// var colMensaje = db.collection("MENSAJES");
 
 
 // Handle Cordova Device Ready Event
@@ -71,41 +68,8 @@ $$(document).on('page:init', '.page[data-name="login"]', function (e) {
 $$(document).on('page:init', '.page[data-name="confirmacion"]', function (e) {
     $$("#confNombre").text(nombre)
     $$("#confEmail").text(email)
-
-    // onSuccess Callback
-    // This method accepts a Position object, which contains the
-    // current GPS coordinates
-    //
-    // var fnLeeOKelGPS = function(position) {
-    //     latitud = position.coords.latitude 
-    //     longitud = position.coords.longitude
-
-    //     $$("#confLatitud").text(latitud)
-    //     $$("#confLongitud").text(longitud)
-
-        /*
-        alert('Latitude: '          + position.coords.latitude          + '\n' +
-              'Longitude: '         + position.coords.longitude         + '\n' +
-              'Altitude: '          + position.coords.altitude          + '\n' +
-              'Accuracy: '          + position.coords.accuracy          + '\n' +
-              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-              'Heading: '           + position.coords.heading           + '\n' +
-              'Speed: '             + position.coords.speed             + '\n' +
-              'Timestamp: '         + position.timestamp                + '\n');
-        */
-        // cant de segundos que pasaron desde el 1/1/1970 
-//     };
-
-//     // onError Callback receives a PositionError object
-//     //
-//     function onErrorGPS(error) {
-//         alert('code: '    + error.code    + '\n' +
-//               'message: ' + error.message + '\n');
-//     }
-
-//     navigator.geolocation.getCurrentPosition(fnLeeOKelGPS, onErrorGPS);
-
-
+    $$("#diaCenaReservada").text(dias)
+    $$("#cantPersonascena").text(cantidad);
 
 })
 
@@ -114,26 +78,57 @@ $$(document).on('page:init', '.page[data-name="reservar"]', function (e) {
 })
 
 $$(document).on('page:init', '.page[data-name="cena"]', function (e) {
+    $$("#btncena").on("click", diaReservado);
+    $$("#btncena").on("click", cantidadPersonas);
     diaReservado();
+    cantidadPersonas();
 })
 
+$$(document).on('page:init', '.page[data-name="verReservas"]', function (e) {
+    // diaReservado();
+})
 
+$$(document).on('page:init', '.page[data-name="boliche"]', function (e) {
+    // diaReservado();
+})
+
+$$(document).on('page:init', '.page[data-name="cenaReservada"]', function (e) {
+    $$("#confNombre").text(nombre)
+    $$("#confEmail").text(email)
+    $$("#diaCenaReservada").text(dias)
+    $$("#cantPersonascena").text(cantidad);
+   
+})
+
+$$(document).on('page:init', '.page[data-name="bolicheReservado"]', function (e) {
+    diaReservado()
+    cargarDatosUsuarioLogueado()
+    $$("#diaCenaReservada").text(dias)
+    $$("#cantPersonascena").text(cantidad);
+})
+$$(document).on('page:init', '.page[data-name="viernes"]', function (e) {
+   
+})
+$$(document).on('page:init', '.page[data-name="sabado"]', function (e) {
+   
+})
+$$(document).on('page:init', '.page[data-name="info"]', function (e) {
+    
+})
 
 /* SEMBRADO */  
-function sembrarDatos() {
+// function sembrarDatos() {
 
-    var dato = { apellido: "Montenegro", nombre: "Jorge", rol: "Administrador" }
-    var miId = "admin@admin.com";
-    colUsuarios.doc(miId).set(dato)
-    .then( function(docRef) {
-        console.log("Doc creado con el id: " + docRef.id);
-    })
-    .catch(function(error) {
-        console.log("Error: " + error);
-    })
-
-}
-
+//     var dato = { apellido: "Montenegro", nombre: "Jorge", rol: "Administrador" }
+//     var miId = "admin@admin.com";
+//     colUsuarios.doc(miId).set(dato)
+//     .then( function(docRef) {
+//         console.log("Doc creado con el id: " + docRef.id);
+//     })
+//     .catch(function(error) {
+//         console.log("Error: " + error);
+//     })
+// }
 
 
 /* MIS FUNCIONES */
@@ -142,7 +137,7 @@ var email, clave, nombre, apellido, dias, cantidad;
 function fnIniciarSesion() {
     email = $$("#loginEmail").val();
     clave = $$("#loginClave").val();
-
+    
     if (email!="" && clave!="") {
 
 
@@ -150,11 +145,33 @@ function fnIniciarSesion() {
           .then((userCredential) => {
             // Signed in
             var user = userCredential.user;
+            console.log("Bienvenid@!!! " + email);
+            colUsuarios.doc(email).get()
+            // colUsuarios.get()
+            .then(function (result) {
+                console.log(result.id);
+                    
+                    data = result.data();
+                    console.log("data", data.rol);
+                    console.log("data", data.nombre);
 
-            console.log("Bienvenide! " + email);
 
-            mainView.router.navigate('/reservar/');
-            // ...
+            if (data.rol == "Administrador") {
+                mainView.router.navigate('/verReservas/')
+            }
+                else if (data.rol == "Usuario") {
+                mainView.router.navigate('/reservar/')
+                }
+                
+            })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+        
+                    console.error(errorCode);
+                        console.error(errorMessage);
+                  });
+
           })
           .catch((error) => {
             var errorCode = error.code;
@@ -163,9 +180,9 @@ function fnIniciarSesion() {
             console.error(errorCode);
                 console.error(errorMessage);
           });
+
     }
 }
-
 
 function fnRegistro() {
     email = $$("#indexEmail").val();
@@ -177,7 +194,7 @@ function fnRegistro() {
                 // Signed in
                 var user = userCredential.user;
                 console.log("Bienvenide! " + email);
-                // ...
+                
                 mainView.router.navigate('/registro/');
               })
               .catch((error) => {
@@ -188,9 +205,7 @@ function fnRegistro() {
                 if (errorCode == "auth/email-already-in-use") {
                     console.error("El mail ya esta en uso");
                 }
-                // ..
               });
-        //mainView.router.navigate("/registro/")
     }
 }
 
@@ -245,9 +260,13 @@ function cargarDatosUsuarioLogueado() {
     })}
 
 function diaReservado() {
+    console.log("entraste a la funcion");
     dias = document.querySelector("input[name=diaReserva]:checked").value
+    console.log(dias);
+  
 }
 
 function cantidadPersonas() {
-    cantidad = $$("#cantPersonas").text(cantidad)
+    cantidad =document.querySelector("input[id=cantPersonas]").value
+    console.log(cantidad);
 }
