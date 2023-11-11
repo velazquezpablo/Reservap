@@ -24,8 +24,8 @@ var app = new Framework7({
       { path: '/boliche/',          url: 'boliche.html',   },
       { path: '/cenaReservada/',    url: 'cenaReservada.html',   },
       { path: '/bolicheReservado/', url: 'bolicheReservado.html',   },
-      { path: '/viernes/',          url: 'viernes.html',   },
-      { path: '/sabado/',           url: 'sabado.html',   },
+      { path: '/totalcenas/',       url: 'totalcenas.html',   },
+      { path: '/totalboliche/',     url: 'totalboliche.html',   },
       { path: '/info/',             url: 'info.html',   },
     ]
     // ... other parameters
@@ -109,10 +109,10 @@ $$(document).on('page:init', '.page[data-name="bolicheReservado"]', function (e)
     $$("#diaCenaReservada").text(dias)
     $$("#cantPersonascena").text(cantidad);
 })
-$$(document).on('page:init', '.page[data-name="viernes"]', function (e) {
+$$(document).on('page:init', '.page[data-name="totalcenas"]', function (e) {
    
 })
-$$(document).on('page:init', '.page[data-name="sabado"]', function (e) {
+$$(document).on('page:init', '.page[data-name="totalboliche"]', function (e) {
    
 })
 $$(document).on('page:init', '.page[data-name="info"]', function (e) {
