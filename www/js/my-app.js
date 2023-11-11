@@ -89,7 +89,10 @@ $$(document).on('page:init', '.page[data-name="verReservas"]', function (e) {
 })
 
 $$(document).on('page:init', '.page[data-name="boliche"]', function (e) {
-    // diaReservado();
+    $$("#btncena").on("click", diaReservado);
+    $$("#btncena").on("click", cantidadPersonas);
+    diaReservado();
+    cantidadPersonas();
 })
 
 $$(document).on('page:init', '.page[data-name="cenaReservada"]', function (e) {
